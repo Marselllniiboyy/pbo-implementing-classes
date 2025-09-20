@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
-public class IdGenerator {
+public final class IdGenerator {
     /**
      * Menghasilkan nomor kartu ATM/Debit yang unik.
      *

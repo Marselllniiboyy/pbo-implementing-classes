@@ -13,7 +13,7 @@ import domain.exception.BankingException;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
-public class ExceptionHandler {
+public final class ExceptionHandler {
     private final LogService logService;
     
     /**

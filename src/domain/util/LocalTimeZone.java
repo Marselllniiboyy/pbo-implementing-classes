@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
-public class LocalTimeZone {
+public final class LocalTimeZone {
     
     /**
      * Mendapatkan timestamp saat ini dalam epoch seconds (timezone Asia/Makassar).
