@@ -9,9 +9,9 @@ import domain.exception.CardException;
 import domain.repository.AccountCardRepository;
 import domain.repository.AccountRepository;
 import domain.repository.CardTypeRepository;
+import domain.util.IdGenerator;
 
 import java.math.BigDecimal;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Service untuk mengelola operasi bisnis terkait rekening bank.
@@ -54,7 +54,7 @@ public class AccountService {
     public AccountEntity createAccount(CreateAccountDto accountDto) {
         AccountEntity account = new AccountEntity(
                 0,
-                generateAccountNumber(),
+                IdGenerator.generateAccountNumber(),
                 accountDto.balance(),
                 accountDto.accountType(),
                 accountDto.customer().id(),
@@ -125,7 +125,7 @@ public class AccountService {
         AccountCardEntity accountCard = new AccountCardEntity(
                 0,
                 assignCardDto.account().id(),
-                generateCardNumber(),
+                IdGenerator.generateCardNumber(),
                 assignCardDto.pin(),
                 assignCardDto.cardType().id(),
                 true,
@@ -134,39 +134,5 @@ public class AccountService {
         );
 
         return accountCardRepository.save(accountCard);
-    }
-
-    /**
-     * Menghasilkan nomor kartu ATM/Debit yang unik.
-     * 
-     * <p>Method ini menggunakan ThreadLocalRandom untuk menghasilkan
-     * nomor kartu 10 digit yang unik dalam sistem.</p>
-     * 
-     * @return String berisi nomor kartu 10 digit
-     */
-    protected String generateCardNumber() {
-        long min = 1_000_000_000L;
-
-        // The upper bound (exclusive), which is the smallest 11-digit number
-        long max = 10_000_000_000L;
-
-        return Long.toString(ThreadLocalRandom.current().nextLong(min, max));
-    }
-
-    /**
-     * Menghasilkan nomor rekening bank yang unik.
-     * 
-     * <p>Method ini menggunakan ThreadLocalRandom untuk menghasilkan
-     * nomor rekening 10 digit yang unik dalam sistem.</p>
-     * 
-     * @return String berisi nomor rekening 10 digit
-     */
-    protected String generateAccountNumber() {
-        long min = 1_000_000_000L;
-
-        // The upper bound (exclusive), which is the smallest 11-digit number
-        long max = 10_000_000_000L;
-
-        return Long.toString(ThreadLocalRandom.current().nextLong(min, max));
     }
 }
