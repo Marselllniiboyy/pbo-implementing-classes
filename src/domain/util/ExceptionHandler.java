@@ -1,4 +1,4 @@
-package application.util;
+package domain.util;
 
 import application.service.LogService;
 import domain.exception.BankingException;

@@ -1,6 +1,6 @@
 package domain.exception;
 
-import application.util.CurrencyFormatter;
+import domain.util.CurrencyFormatter;
 import java.math.BigDecimal;
 import java.util.Map;
 

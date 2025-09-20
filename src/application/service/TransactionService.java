@@ -1,6 +1,6 @@
 package application.service;
 
-import application.util.LocalTimeZone;
+import domain.util.LocalTimeZone;
 import domain.entity.AccountCardEntity;
 import domain.entity.AccountEntity;
 import domain.entity.CardTypeEntity;

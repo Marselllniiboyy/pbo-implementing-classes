@@ -1,6 +1,6 @@
 package domain.entity;
 
-import application.util.CurrencyFormatter;
+import domain.util.CurrencyFormatter;
 import domain.value.AccountType;
 
 import java.math.BigDecimal;
