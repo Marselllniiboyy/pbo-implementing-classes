@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat repository AccountCard berada.
 package domain.repository;
 
 import domain.entity.AccountCardEntity;
@@ -16,9 +17,11 @@ import java.util.Optional;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[interface]: AccountCardRepository adalah kontrak/pola untuk pengelolaan entitas kartu ATM/Debit.
 public interface AccountCardRepository {
     
     /**
+     * PBO[method]: Mencari kartu berdasarkan ID unik kartu.
      * Mencari kartu berdasarkan ID.
      * 
      * @param id ID kartu yang dicari
@@ -27,6 +30,7 @@ public interface AccountCardRepository {
     Optional<AccountCardEntity> findById(int id);
 
     /**
+     *PBO[method]: Mencari kartu berdasarkan ID rekening yang terkait.
      * Mencari kartu berdasarkan ID rekening.
      * 
      * @param accountId ID rekening yang terkait dengan kartu
@@ -35,6 +39,7 @@ public interface AccountCardRepository {
     Optional<AccountCardEntity> findByAccountId(int accountId);
 
     /**
+     * PBO[method]: Mengambil semua data kartu yang tersimpan dalam repository.
      * Mengambil semua data kartu yang tersimpan.
      * 
      * @return List berisi semua AccountCardEntity yang tersimpan
@@ -42,6 +47,7 @@ public interface AccountCardRepository {
     List<AccountCardEntity> findAll();
 
     /**
+     * PBO[method]: Menyimpan kartu baru ke dalam repository.
      * Menyimpan kartu baru ke dalam repository.
      * 
      * @param account AccountCardEntity yang akan disimpan
@@ -50,6 +56,7 @@ public interface AccountCardRepository {
     AccountCardEntity save(AccountCardEntity account);
 
     /**
+     * PBO[method]: Memperbarui data kartu yang sudah ada.
      * Memperbarui data kartu yang sudah ada.
      * 
      * @param account AccountCardEntity dengan data yang sudah diperbarui
@@ -59,6 +66,7 @@ public interface AccountCardRepository {
     AccountCardEntity update(AccountCardEntity account);
 
     /**
+     * PBO[method]: Menghapus kartu berdasarkan ID.
      * Menghapus kartu berdasarkan ID.
      * 
      * @param id ID kartu yang akan dihapus

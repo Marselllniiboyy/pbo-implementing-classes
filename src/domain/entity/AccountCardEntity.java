@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat entitas domain ini berada
 package domain.entity;
 
 /**
@@ -18,6 +19,8 @@ package domain.entity;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+
+// PBO[record]: Mendeklarasikan record AccountCardEntity untuk menyimpan data kartu bank secara immutable
 public record AccountCardEntity(int id, int accountId, String cardNumber, int pin, int cardTypeId, boolean active,
                                 String expiredDate) {
 

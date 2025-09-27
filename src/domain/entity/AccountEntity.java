@@ -1,11 +1,13 @@
+// PBO[package]: Menentukan paket tempat entitas domain ini berada
 package domain.entity;
 
+// PBO[import]: Mengimpor utilitas untuk format mata uang dan tipe nilai akun
 import domain.util.CurrencyFormatter;
 import domain.value.AccountType;
-
 import java.math.BigDecimal;
 
 /**
+ * PBO[entity]: Entitas yang merepresentasikan rekening bank nasabah.
  * Entitas yang merepresentasikan rekening bank nasabah.
  * 
  * <p>Record ini menyimpan informasi rekening bank termasuk saldo, tipe akun,
@@ -23,10 +25,12 @@ import java.math.BigDecimal;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[record]: Mendeklarasikan record AccountEntity untuk menyimpan data rekening bank secara immutable
 public record AccountEntity(int id, String accountNumber, BigDecimal balance, AccountType accountType, int customerId,
                             BigDecimal dailyTransferLimit, BigDecimal dailyWithdrawLimit) {
 
     /**
+     * PBO[method]: Mengembalikan saldo rekening dalam format Rupiah Indonesia.
      * Mengembalikan saldo rekening dalam format Rupiah Indonesia.
      * 
      * @return String saldo yang diformat dengan "Rp" dan pemisah ribuan
@@ -43,6 +47,7 @@ public record AccountEntity(int id, String accountNumber, BigDecimal balance, Ac
     }
 
     /**
+     * PBO[method]: Mengembalikan saldo rekening dalam format Rupiah Indonesia dengan desimal.
      * Mengembalikan saldo rekening dalam format Rupiah Indonesia dengan desimal.
      * 
      * @return String saldo yang diformat dengan "Rp", pemisah ribuan, dan 2 desimal

@@ -188,7 +188,7 @@ public final class Application {
         log.info("Ketiga sahabat membuka rekening tabungan dengan saldo awal yang berbeda.");
         log.info("Ini adalah langkah pertama menuju kemandirian finansial mereka.");
         log.info("");
-        log.info("🎓 SINDHU - Rekening Pertama");
+//        log.info("🎓 SINDHU - Rekening Pertama");
         log.info("   💰 Saldo awal: Rp 0 (masih menunggu kiriman orang tua)");
         AccountEntity accountSindhu = accountService.createAccount(
                 new CreateAccountDto(
@@ -497,7 +497,7 @@ public final class Application {
         log.info("");
 
         // ==================== SITUASI PIN INVALID ====================
-        log.info("🔐 AKT 7.5: MOMEN MENEGANGKAN - PIN SALAH!");
+        log.info("🔐 AKT 7.7: MOMEN MENEGANGKAN - PIN SALAH!");
         log.info("=============================================");
         log.info("");
         log.info("Sindhu mencoba melakukan transfer via kartu ATM untuk pertama kalinya.");

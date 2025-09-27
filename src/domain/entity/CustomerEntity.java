@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat entitas domain ini berada.
 package domain.entity;
 
 /**
@@ -17,6 +18,7 @@ package domain.entity;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[record]: CustomerEntity adalah record immutable yang menyimpan informasi pribadi dan kontak nasabah bank.
 public record CustomerEntity(int id, String name, String email, String phoneNumber, String address,
                              String dateOfBirth) {
 

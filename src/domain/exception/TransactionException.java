@@ -1,15 +1,36 @@
+// PBO[package]: Menentukan paket domain.exception agar exception ini dapat digunakan di seluruh domain
 package domain.exception;
-
+// PBO[import]: Mengimpor utilitas untuk format mata uang Rupiah
 import domain.util.CurrencyFormatter;
+// PBO[import]: Mengimpor BigDecimal untuk nilai numerik presisi tinggi
+// PBO[import]: Mengimpor Map untuk menyimpan context tambahan pada exception
 import java.math.BigDecimal;
 import java.util.Map;
 
 /**
- * Exception untuk masalah terkait transaksi
+ * PBO[class]: Kelas induk untuk semua exception terkait transaksi
+ * Exception untuk masalah terkait transaksi.
+ *
+ * <p>Kelas induk ini dan inner class-nya mewakili berbagai kondisi error
+ * yang dapat terjadi saat melakukan transaksi dalam sistem perbankan.
+ * Setiap inner class memiliki errorCode, pesan user-friendly, pesan teknis,
+ * dan context tambahan untuk memudahkan debugging.</p>
+ *
+ * <p>Contoh penggunaan:
+ * <pre>
+ * if (totalHariIni.compareTo(limit) > 0) {
+ *     throw new TransactionException.DailyLimitExceeded(noRekening, "TRANSFER", totalHariIni, limit);
+ * }
+ * </pre>
+ * </p>
+ *
+ * @since 1.0
+ * @see BankingException
  */
 public class TransactionException extends BankingException {
-    
+    // PBO[inner-class]: Exception untuk batas transaksi harian terlampaui
     public static class DailyLimitExceeded extends TransactionException {
+        // PBO[konstruktor]: Membuat exception DailyLimitExceeded dengan context limit transaksi
         public DailyLimitExceeded(String accountNumber, String transactionType, BigDecimal currentTotal, BigDecimal limit) {
             super("DAILY_LIMIT_EXCEEDED", 
                 String.format("Batas %s harian terlampaui", getTransactionTypeName(transactionType)), 
@@ -24,6 +45,7 @@ public class TransactionException extends BankingException {
         }
         
         /**
+         * PBO[method]: Mendapatkan total harian diformat Rupiah
          * Mengembalikan total harian saat ini dalam format Rupiah Indonesia.
          * 
          * @return String total harian yang diformat dengan "Rp" dan pemisah ribuan
@@ -33,6 +55,7 @@ public class TransactionException extends BankingException {
         }
         
         /**
+         * PBO[method]: Mendapatkan limit diformat Rupiah
          * Mengembalikan batas maksimal dalam format Rupiah Indonesia.
          * 
          * @return String batas maksimal yang diformat dengan "Rp" dan pemisah ribuan
@@ -42,6 +65,7 @@ public class TransactionException extends BankingException {
         }
         
         /**
+         * PBO[method]: Mendapatkan kelebihan diformat Rupiah
          * Mengembalikan kelebihan batas dalam format Rupiah Indonesia.
          * 
          * @return String kelebihan yang diformat dengan "Rp" dan pemisah ribuan
@@ -49,7 +73,8 @@ public class TransactionException extends BankingException {
         public String getFormattedExcess() {
             return CurrencyFormatter.format((BigDecimal) getContext().get("excess"));
         }
-        
+
+        // PBO[utility]: Mengubah kode transaksi menjadi nama Indonesia user-friendly
         private static String getTransactionTypeName(String type) {
             return switch (type) {
                 case "TRANSFER" -> "transfer";
@@ -62,7 +87,7 @@ public class TransactionException extends BankingException {
             };
         }
     }
-    
+    // PBO[inner-class]: Exception untuk jumlah transaksi tidak valid
     public static class InvalidTransactionAmount extends TransactionException {
         public InvalidTransactionAmount(BigDecimal amount) {
             super("INVALID_TRANSACTION_AMOUNT", 
@@ -81,7 +106,7 @@ public class TransactionException extends BankingException {
                 ));
         }
     }
-    
+    // PBO[inner-class]: Exception untuk transfer ke rekening yang sama
     public static class SameAccountTransfer extends TransactionException {
         public SameAccountTransfer(String accountNumber) {
             super("SAME_ACCOUNT_TRANSFER", 
@@ -90,7 +115,7 @@ public class TransactionException extends BankingException {
                 Map.of("accountNumber", accountNumber));
         }
     }
-    
+    // PBO[inner-class]: Exception untuk transaksi tidak ditemukan
     public static class TransactionNotFound extends TransactionException {
         public TransactionNotFound(int transactionId) {
             super("TRANSACTION_NOT_FOUND", 
@@ -99,7 +124,7 @@ public class TransactionException extends BankingException {
                 Map.of("transactionId", transactionId));
         }
     }
-    
+    // PBO[inner-class]: Exception untuk biaya transfer melebihi saldo
     public static class TransferFeeExceedsBalance extends TransactionException {
         public TransferFeeExceedsBalance(String accountNumber, BigDecimal balance, BigDecimal transferAmount, BigDecimal fee) {
             super("TRANSFER_FEE_EXCEEDS_BALANCE", 
@@ -141,7 +166,7 @@ public class TransactionException extends BankingException {
             return CurrencyFormatter.format((BigDecimal) getContext().get("totalRequired"));
         }
     }
-    
+    // PBO[konstruktor]: Konstruktor privat untuk TransactionException agar hanya inner class yang bisa membuat
     private TransactionException(String errorCode, String userMessage, String technicalMessage, Map<String, Object> context) {
         super(errorCode, userMessage, technicalMessage, context);
     }

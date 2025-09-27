@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ * PBO[repository]: Interface repository untuk mengelola data nasabah dalam sistem perbankan.
  * Interface repository untuk mengelola data nasabah dalam sistem perbankan.
  * 
  * <p>Interface ini mendefinisikan operasi CRUD (Create, Read, Update, Delete)
@@ -15,9 +16,11 @@ import java.util.Optional;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[interface]: CustomerRepository adalah kontrak untuk akses dan pengelolaan entitas nasabah.
 public interface CustomerRepository {
     
     /**
+     * PBO[method]: Mencari nasabah berdasarkan ID unik.
      * Mencari nasabah berdasarkan ID.
      * 
      * @param id ID nasabah yang dicari
@@ -26,6 +29,7 @@ public interface CustomerRepository {
     Optional<CustomerEntity> findById(int id);
 
     /**
+     * PBO[method]: Mencari nasabah berdasarkan email unik.
      * Mencari nasabah berdasarkan email.
      * 
      * @param email email nasabah yang dicari
@@ -34,6 +38,7 @@ public interface CustomerRepository {
     Optional<CustomerEntity> findByEmail(String email);
 
     /**
+     * PBO[method]: Mengambil semua data nasabah yang tersimpan di repository.
      * Mengambil semua data nasabah yang tersimpan.
      * 
      * @return List berisi semua CustomerEntity yang tersimpan
@@ -41,6 +46,7 @@ public interface CustomerRepository {
     List<CustomerEntity> findAll();
 
     /**
+     * PBO[method]: Memperbarui data nasabah yang sudah ada.
      * Memperbarui data nasabah yang sudah ada.
      * 
      * @param customer CustomerEntity dengan data yang sudah diperbarui
@@ -50,6 +56,7 @@ public interface CustomerRepository {
     CustomerEntity update(CustomerEntity customer);
 
     /**
+     * PBO[method]: Menyimpan nasabah baru ke dalam repository.
      * Menyimpan nasabah baru ke dalam repository.
      * 
      * @param customer CustomerEntity yang akan disimpan
@@ -58,6 +65,7 @@ public interface CustomerRepository {
     CustomerEntity save(CustomerEntity customer);
 
     /**
+     * PBO[method]: Menghapus nasabah berdasarkan ID.
      * Menghapus nasabah berdasarkan ID.
      * 
      * @param id ID nasabah yang akan dihapus

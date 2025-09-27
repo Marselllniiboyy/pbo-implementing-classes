@@ -1,3 +1,5 @@
+// PBO[package]: Menentukan paket tempat utilitas domain ini berada
+// Dalam OOP, pemisahan package membantu modularitas & keteraturan kode.
 package domain.util;
 
 import java.math.BigDecimal;
@@ -5,6 +7,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
+ * PBO[utility]: Utility class untuk formatting mata uang Rupiah Indonesia.
  * Utility class untuk formatting mata uang Rupiah Indonesia.
  * 
  * <p>Class ini menyediakan method-method untuk memformat nilai BigDecimal
@@ -14,26 +17,33 @@ import java.util.Locale;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+
+// PBO[class]: CurrencyFormatter adalah class utilitas final (tidak bisa diturunkan).
+// Final class di OOP = mencegah inheritance supaya perilaku tidak diubah subclass.
+// Utility class = kumpulan fungsi statis, tidak boleh diinstansiasi.
 public final class CurrencyFormatter {
     
     /**
+     * PBO[field-static-final]: Konstanta static final untuk menyimpan formatter.
      * Formatter untuk menampilkan mata uang dalam format Rupiah Indonesia.
      * Menggunakan format "Rp 1.234.567" dengan pemisah ribuan.
      */
     private static final NumberFormat RUPIAH_FORMATTER = NumberFormat.getNumberInstance(Locale.of("id", "ID"));
     
     /**
+     * // PBO[field-static-final]: Formatter untuk Rupiah dengan desimal.
      * Formatter untuk menampilkan mata uang dengan desimal.
      * Menggunakan format "Rp 1.234.567,50" dengan pemisah ribuan dan desimal.
      */
     private static final NumberFormat RUPIAH_FORMATTER_WITH_DECIMALS = NumberFormat.getNumberInstance(Locale.of("id", "ID"));
-    
+
+    // PBO[static block]: Blok inisialisasi statis yang mengatur jumlah digit desimal pada formatter dengan desimal agar selalu 2 digit.
     static {
         RUPIAH_FORMATTER_WITH_DECIMALS.setMinimumFractionDigits(2);
         RUPIAH_FORMATTER_WITH_DECIMALS.setMaximumFractionDigits(2);
     }
-    
-    // Private constructor untuk mencegah instantiation
+
+    // PBO[constructor]: Constructor privat untuk mencegah pembuatan instance CurrencyFormatter (utility class dipakai lewat metode statis).
     private CurrencyFormatter() {
         throw new UnsupportedOperationException("Utility class cannot be instantiated");
     }
@@ -77,6 +87,7 @@ public final class CurrencyFormatter {
     }
     
     /**
+     * // PBO[static-method]: Memformat BigDecimal menjadi string Rupiah dengan pemisah ribuan dan prefix "Rp".
      * Mengembalikan nilai double dalam format Rupiah Indonesia.
      * 
      * @param amount nilai yang akan diformat
@@ -88,6 +99,7 @@ public final class CurrencyFormatter {
      * // Output: "Rp 1.000.000"
      * </pre>
      */
+
     public static String format(double amount) {
         return format(BigDecimal.valueOf(amount));
     }

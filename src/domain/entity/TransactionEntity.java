@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat entitas domain ini berada.
 package domain.entity;
 
 import domain.value.TransactionType;
@@ -22,6 +23,7 @@ import java.math.BigDecimal;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[record]: TransactionEntity adalah record immutable yang menyimpan detail transaksi keuangan nasabah.
 public record TransactionEntity(int id, int accountId, Integer destinationAccountId, BigDecimal amount,
                                 TransactionType transactionType, String date, long timestamp) {
 }

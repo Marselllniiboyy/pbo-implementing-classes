@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat utility LocalTimeZone berada.
 package domain.util;
 
 import java.time.LocalDate;
@@ -5,6 +6,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 /**
+ * PBO[utility]: Utility class untuk mengelola waktu dan timezone dalam sistem perbankan.
  * Utility class untuk mengelola waktu dan timezone dalam sistem perbankan.
  * 
  * <p>Class ini menyediakan method untuk mendapatkan waktu saat ini dan tanggal
@@ -14,9 +16,11 @@ import java.time.ZonedDateTime;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[class-final]: LocalTimeZone adalah class utilitas final (tidak bisa di-extend) untuk waktu/tanggal.
 public final class LocalTimeZone {
     
     /**
+     * PBO[static method]: Mendapatkan timestamp saat ini dalam epoch seconds (timezone Asia/Makassar).
      * Mendapatkan timestamp saat ini dalam epoch seconds (timezone Asia/Makassar).
      * 
      * <p>Method ini mengembalikan waktu saat ini dalam format epoch seconds
@@ -29,6 +33,7 @@ public final class LocalTimeZone {
     }
 
     /**
+     * PBO[static method]: Mendapatkan tanggal saat ini dalam format string YYYY-MM-DD.
      * Mendapatkan tanggal saat ini dalam format string YYYY-MM-DD.
      * 
      * <p>Method ini mengembalikan tanggal saat ini dalam format ISO 8601

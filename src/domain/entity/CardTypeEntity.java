@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat entitas domain ini berada.
 package domain.entity;
 
 import java.math.BigDecimal;
@@ -21,6 +22,7 @@ import java.math.BigDecimal;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[record]: CardTypeEntity adalah record immutable yang menyimpan data tipe kartu beserta batasan dan biaya yang berlaku.
 public record CardTypeEntity(int id, String name, String description, BigDecimal monthlyPrice,
                              BigDecimal dailyTransferLimit, BigDecimal dailyWithdrawLimit, BigDecimal dailyDepositLimit,
                              BigDecimal minimumBalance) {

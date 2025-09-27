@@ -1,3 +1,4 @@
+// PBO[package]: Menentukan paket tempat repository Account berada.
 package domain.repository;
 
 import domain.entity.AccountEntity;
@@ -6,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
+ *  PBO[repository]: Interface repository untuk mengelola data rekening bank dalam sistem perbankan.
  * Interface repository untuk mengelola data rekening bank dalam sistem perbankan.
  * 
  * <p>Interface ini mendefinisikan operasi CRUD (Create, Read, Update, Delete)
@@ -16,9 +18,11 @@ import java.util.Optional;
  * @author Made Marsel Biliana Wijaya
  * @since 1.0
  */
+// PBO[interface]: AccountRepository adalah kontrak/pola untuk pengelolaan entitas rekening bank.
 public interface AccountRepository {
     
     /**
+     * PBO[method]: Mencari rekening berdasarkan ID unik rekening.
      * Mencari rekening berdasarkan ID.
      * 
      * @param id ID rekening yang dicari
@@ -27,6 +31,7 @@ public interface AccountRepository {
     Optional<AccountEntity> findById(int id);
 
     /**
+     * PBO[method]: Mencari rekening berdasarkan ID nasabah pemilik rekening.
      * Mencari rekening berdasarkan ID nasabah.
      * 
      * @param customerId ID nasabah pemilik rekening
@@ -35,6 +40,7 @@ public interface AccountRepository {
     Optional<AccountEntity> findByCustomerId(int customerId);
 
     /**
+     * PBO[method]: Mencari rekening berdasarkan nomor rekening bank.
      * Mencari rekening berdasarkan nomor rekening.
      * 
      * @param accountNumber nomor rekening yang dicari (10 digit)
@@ -43,6 +49,7 @@ public interface AccountRepository {
     Optional<AccountEntity> findByAccountNumber(String accountNumber);
 
     /**
+     * PBO[method]: Mengambil semua data rekening yang tersimpan di repository.
      * Mengambil semua data rekening yang tersimpan.
      * 
      * @return List berisi semua AccountEntity yang tersimpan
@@ -50,6 +57,7 @@ public interface AccountRepository {
     List<AccountEntity> findAll();
 
     /**
+     * PBO[method]: Menyimpan rekening baru ke dalam repository.
      * Menyimpan rekening baru ke dalam repository.
      * 
      * @param account AccountEntity yang akan disimpan
@@ -58,6 +66,7 @@ public interface AccountRepository {
     AccountEntity save(AccountEntity account);
 
     /**
+     * PBO[method]: Memperbarui data rekening yang sudah ada.
      * Memperbarui data rekening yang sudah ada.
      * 
      * @param account AccountEntity dengan data yang sudah diperbarui
@@ -67,6 +76,7 @@ public interface AccountRepository {
     AccountEntity update(AccountEntity account);
 
     /**
+     * PBO[method]: Menghapus rekening berdasarkan ID.
      * Menghapus rekening berdasarkan ID.
      * 
      * @param id ID rekening yang akan dihapus

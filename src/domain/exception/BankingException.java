@@ -1,9 +1,14 @@
+// PBO[package]: Menentukan paket domain.exception; semua exception sistem perbankan dikelompokkan di sini.
 package domain.exception;
 
+// PBO[import]: Mengimpor LocalDateTime untuk mencatat waktu kapan exception terjadi.
+// PBO[import]: Mengimpor Map untuk menyimpan context informasi tambahan yang berkaitan dengan error.
+import java.util.Map;
 import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
+ * PBO[abstract class]: BankingException adalah base/induk untuk semua exception di sistem perbankan.
  * Base exception class untuk semua exception dalam sistem perbankan.
  * 
  * <p>Class ini menyediakan payload yang kaya untuk debugging dan error handling
@@ -16,13 +21,14 @@ import java.util.Map;
  * @since 1.0
  */
 public abstract class BankingException extends RuntimeException {
-    private final String errorCode;
-    private final LocalDateTime timestamp;
-    private final Map<String, Object> context;
-    private final String userMessage;
-    private final String technicalMessage;
+    private final String errorCode;// PBO[field-final]: Kode error unik untuk mengidentifikasi jenis exception.
+    private final LocalDateTime timestamp;// PBO[field-final]: Timestamp kapan exception dibuat.
+    private final Map<String, Object> context;// PBO[field-final]: Map berisi informasi tambahan (context) terkait error ini.
+    private final String userMessage;// PBO[field-final]: Pesan yang user-friendly untuk ditampilkan ke pengguna.
+    private final String technicalMessage;// PBO[field-final]: Pesan teknis untuk developer/debugging.
 
     /**
+     * PBO[constructor]: Konstruktor lengkap untuk BankingException.
      * Konstruktor lengkap untuk BankingException.
      * 
      * @param errorCode kode error yang unik untuk jenis exception ini
@@ -31,7 +37,7 @@ public abstract class BankingException extends RuntimeException {
      * @param context map berisi informasi tambahan untuk debugging
      */
     protected BankingException(String errorCode, String userMessage, String technicalMessage, Map<String, Object> context) {
-        super(technicalMessage);
+        super(technicalMessage); // memanggil RuntimeException dengan pesan teknis
         this.errorCode = errorCode;
         this.userMessage = userMessage;
         this.technicalMessage = technicalMessage;
@@ -40,6 +46,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[constructor-overload]: Konstruktor tanpa context tambahan.
      * Konstruktor BankingException tanpa context.
      * 
      * @param errorCode kode error yang unik untuk jenis exception ini
@@ -51,6 +58,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[constructor-overload]: Konstruktor dengan pesan yang sama untuk user dan technical.
      * Konstruktor BankingException dengan pesan yang sama untuk user dan technical.
      * 
      * @param errorCode kode error yang unik untuk jenis exception ini
@@ -61,6 +69,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[getter]: Mengembalikan kode error unik.
      * Mengembalikan kode error yang unik untuk jenis exception ini.
      * 
      * @return kode error sebagai string
@@ -70,6 +79,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[getter]: Mengembalikan timestamp kapan exception dibuat.
      * Mengembalikan timestamp saat exception terjadi.
      * 
      * @return LocalDateTime saat exception terjadi
@@ -79,6 +89,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[getter]: Mengembalikan map context informasi tambahan untuk debugging.
      * Mengembalikan context map berisi informasi tambahan untuk debugging.
      * 
      * @return Map berisi key-value pairs untuk debugging
@@ -88,6 +99,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[getter]: Mengembalikan pesan user-friendly untuk ditampilkan ke pengguna.
      * Mengembalikan pesan yang user-friendly untuk ditampilkan ke pengguna.
      * 
      * @return pesan user-friendly sebagai string
@@ -97,6 +109,7 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[getter]: Mengembalikan pesan teknis untuk debugging developer.
      * Mengembalikan pesan teknis untuk debugging developer.
      * 
      * @return pesan teknis sebagai string
@@ -106,6 +119,8 @@ public abstract class BankingException extends RuntimeException {
     }
 
     /**
+     * PBO[override toString]: Mengembalikan representasi string exception yang lengkap:
+     * [errorCode] userMessage - technicalMessage (Context: contextMap)
      * Mengembalikan representasi string dari exception ini.
      * 
      * <p>Format: [errorCode] userMessage - technicalMessage (Context: contextMap)</p>
