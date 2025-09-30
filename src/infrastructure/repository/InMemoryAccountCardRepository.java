@@ -30,7 +30,7 @@ public class InMemoryAccountCardRepository implements AccountCardRepository {
     private final AtomicInteger idCounter = new AtomicInteger(0);
 
     /**
-     * PBO[method]: Mencari kartu berdasarkan ID unik.
+     * PBO[method-Polymorphim]: Mencari kartu berdasarkan ID unik.
      *
      * @param id ID kartu yang dicari
      * @return Optional berisi AccountCardEntity jika ditemukan, kosong jika tidak

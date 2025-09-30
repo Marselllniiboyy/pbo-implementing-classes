@@ -25,6 +25,7 @@ import java.math.BigDecimal;
  * @since 1.0
  */
 public class AccountService {
+//  PBO[Encapsulation]: semua variabel tidak bisa diakses dari luar kelas(dibungkus)
     private final AccountCardRepository accountCardRepository;
     private final CardTypeRepository cardTypeRepository;
     private final AccountRepository accountRepository;

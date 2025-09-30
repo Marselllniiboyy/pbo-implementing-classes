@@ -13,6 +13,7 @@ import domain.value.AccountType;
 import infrastructure.container.AppContainer;
 import infrastructure.container.DefaultAppContainer;
 
+//PBO[concrete class]: Mengimpementasikan semua method yang telah dibuat
 public final class Application {
     // Layanan-layanan
     private AccountService accountService;
@@ -26,6 +27,7 @@ public final class Application {
         setup(container);
     }
 
+//    PBO[Overloading method setup]
     public void setup(AppContainer container) {
         // Inisialisasi layanan log terlebih dahulu
         log = container.getLogService();
